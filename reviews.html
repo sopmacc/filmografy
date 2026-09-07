@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Filmography - Reviews</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Customizado -->
+    <link href="style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+      /* Estilo extra para as estrelas interativas */
+      .star-rating i {
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #495057;
+        transition: color 0.2s;
+      }
+      .star-rating i.active {
+        color: var(--filmo-accent);
+      }
+      
+      /* REGRA NOVA: Garante que os placeholders fiquem visíveis no fundo escuro */
+      .form-control::placeholder {
+        color: #adb5bd !important;
+        opacity: 0.9 !important;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-filmo" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Filmography</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="filmes.html">Filmes</a></li>
+            <li class="nav-item"><a class="nav-link" href="filmesH.html">Em alta no momento</a></li>
+            <li class="nav-item"><a class="nav-link" href="debates.html">Debates</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="reviews.html">Reviews</a></li>
+          </ul>
+          <form class="d-flex me-3" role="search" id="searchForm">
+            <input class="form-control me-2 rounded-3" type="search" placeholder="Buscar review" aria-label="Search" id="searchInput"/>
+            <button class="btn btn-filmo rounded-3" type="submit">Buscar</button>
+          </form>
+          <!-- Perfil do usuário que puxa o nome do Login -->
+          <div class="d-flex align-items-center text-light border-start border-secondary ps-3 ms-2">
+            <i class="bi bi-person-circle fs-4 me-2" style="color: var(--filmo-accent);"></i>
+            <span class="fw-semibold" style="font-size: 0.95rem;" id="nomeUsuarioNavbar">Usuário</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL: REVIEWS -->
+    <div class="container my-5" style="max-width: 900px;">
+      
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-white fw-bold mb-0" style="font-family: 'Tenor Sans', sans-serif;">Reviews da Comunidade</h2>
+        <span class="badge bg-dark border border-secondary text-light px-3 py-2">Recentes</span>
+      </div>
+
+      <!-- Caixa para Publicar um Review -->
+      <div class="card border-0 shadow mb-5" style="background-color: #2c3440; border-radius: 12px;">
+        <div class="card-body p-4">
+          <h5 class="fw-bold mb-3" style="color: var(--filmo-accent);">Escreva sua Crítica</h5>
+          <form id="formReview">
+            
+            <div class="row mb-3">
+              <div class="col-md-6 mb-3 mb-md-0">
+                <input type="text" class="form-control bg-dark text-white border-secondary" id="filmeReview" placeholder="Nome do Filme" required>
+              </div>
+              <div class="col-md-6">
+                <input type="url" class="form-control bg-dark text-white border-secondary" id="posterReview" placeholder="URL da imagem do pôster (Opcional)">
+              </div>
+            </div>
+
+            <!-- KPI DE ESTRELAS -->
+            <div class="mb-3 d-flex align-items-center">
+              <span class="text-light me-3 fw-semibold">Sua nota:</span>
+              <div class="star-rating" id="starSelector">
+                <i class="bi bi-star-fill" data-valor="1"></i>
+                <i class="bi bi-star-fill" data-valor="2"></i>
+                <i class="bi bi-star-fill" data-valor="3"></i>
+                <i class="bi bi-star-fill" data-valor="4"></i>
+                <i class="bi bi-star-fill" data-valor="5"></i>
+              </div>
+              <input type="hidden" id="notaFilme" value="0" required>
+              <span class="text-secondary ms-3" id="textoNota">Nenhuma nota</span>
+            </div>
+
+            <div class="mb-3">
+              <textarea class="form-control bg-dark text-white border-secondary" id="corpoReview" rows="4" placeholder="Escreva seu comentário..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-filmo fw-bold px-4">Publicar Review</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Lista de Reviews -->
+      <div id="listaReviews" class="d-flex flex-column gap-4">
+        
+        <!-- 1. Devoradores de Estrelas -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
+            <div class="flex-shrink-0 text-center">
+              <img src="https://br.web.img2.acsta.net/r_1920_1080/img/00/51/0051bc7965f851f46f856d4119741487.jpg" alt="Pôster Devoradores" style="width: 100px; height: 150px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+            </div>
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+                  <strong class="text-white me-3">Pedro Campos</strong>
+                  <small class="text-secondary">Avaliou <em>Devoradores de Estrelas</em></small>
+                </div>
+                <div class="text-end" style="color: var(--filmo-accent);">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+              <h5 class="text-white fw-bold mt-2">Ficção científica no seu melhor estado!</h5>
+              <p class="text-light mb-0" style="font-size: 0.95rem; line-height: 1.5;">
+                Que adaptação fantástica! A dinâmica entre o protagonista e o seu improvável companheiro espacial foi perfeitamente traduzida para a tela. A tensão no espaço e a ciência aplicada de forma tão empolgante me prenderam do início ao fim. Uma verdadeira obra-prima sci-fi.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. A Odisseia -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
+            <div class="flex-shrink-0 text-center">
+              <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7229d393-c3b8-4703-a41e-e876546d2612/dlzk9fs-10ba7da0-400c-486c-afa1-407e9a2d8227.jpg/v1/fit/w_828,h_1036,q_70,strp/the_odyssey_official_poster_by_kingtchalla_dynasty_dlzk9fs-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTM1MCIsInBhdGgiOiIvZi83MjI5ZDM5My1jM2I4LTQ3MDMtYTQxZS1lODc2NTQ2ZDI2MTIvZGx6azlmcy0xMGJhN2RhMC00MDBjLTQ4NmMtYWZhMS00MDdlOWEyZDgyMjcuanBnIiwid2lkdGgiOiI8PTEwODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.YifTFCpWI9hs4Rvi8EX7ddEJceVZm1m6mbOeN5fiouk" alt="Pôster A Odisseia" style="width: 100px; height: 150px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+            </div>
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+                  <strong class="text-white me-3">Sophia Bevilaqua</strong>
+                  <small class="text-secondary">Avaliou <em>A Odisseia</em></small>
+                </div>
+                <div class="text-end" style="color: var(--filmo-accent);">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star" style="color: #495057;"></i>
+                </div>
+              </div>
+              <h5 class="text-white fw-bold mt-2">Visceral e Épico.</h5>
+              <p class="text-light mb-0" style="font-size: 0.95rem; line-height: 1.5;">
+                Visualmente deslumbrante. A jornada de sobrevivência nunca foi mostrada com tanta crueza e beleza ao mesmo tempo. Os efeitos deram um tom realista absurdo à mitologia. Achei o meio um pouquinho arrastado, mas o clímax final compensa absolutamente tudo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Homem-Aranha: Um Novo Dia -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
+            <div class="flex-shrink-0 text-center">
+              <img src="https://ingresso-a.akamaihd.net/b2b/production/uploads/articles-content/c0a47a68-1120-4607-a90f-4d3f2a126d78.jpg" alt="Pôster Homem-Aranha" style="width: 100px; height: 150px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+            </div>
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+                  <strong class="text-white me-3">Guilherme Ferreira</strong>
+                  <small class="text-secondary">Avaliou <em>Homem-Aranha: Um Novo Dia</em></small>
+                </div>
+                <div class="text-end" style="color: var(--filmo-accent);">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+              <h5 class="text-white fw-bold mt-2">O frescor que o personagem precisava!</h5>
+              <p class="text-light mb-0" style="font-size: 0.95rem; line-height: 1.5;">
+                Finalmente! Ver o Peter lidando com as consequências das suas escolhas e enfrentando perigos mais "urbanos", com um tom levemente mais sombrio, era exatamente o que os fãs pediam. As coreografias de luta e os saltos pelos prédios estão mais bonitos do que nunca.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. O Brilho Eterno -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
+            <div class="flex-shrink-0 text-center">
+              <img src="https://br.web.img3.acsta.net/r_1920_1080/img/88/89/8889818fc690422fb3785b025fe5d399.jpg" alt="Pôster Brilho Eterno" style="width: 100px; height: 150px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+            </div>
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+                  <strong class="text-white me-3">Eduardo Jorge</strong>
+                  <small class="text-secondary">Avaliou <em>O Brilho Eterno de uma Mente Sem Lembranças</em></small>
+                </div>
+                <div class="text-end" style="color: var(--filmo-accent);">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+              <h5 class="text-white fw-bold mt-2">Um filme que destrói e abraça ao mesmo tempo.</h5>
+              <p class="text-light mb-0" style="font-size: 0.95rem; line-height: 1.5;">
+                Assisto religiosamente todo ano. A genialidade do roteiro cria uma experiência tão real e dolorosa sobre como lidamos com a memória e a perda. A atuação do Jim Carrey é de partir o coração. É poesia pura em forma de cinema.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Walter Mitty -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
+            <div class="flex-shrink-0 text-center">
+              <img src="https://br.web.img2.acsta.net/r_1920_1080/pictures/210/513/21051366_20131021213607144.jpg" alt="Pôster Walter Mitty" style="width: 100px; height: 150px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+            </div>
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+                  <strong class="text-white me-3">Luiza Gomes</strong>
+                  <small class="text-secondary">Avaliou <em>A Vida Secreta de Walter Mitty</em></small>
+                </div>
+                <div class="text-end" style="color: var(--filmo-accent);">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+              <h5 class="text-white fw-bold mt-2">Um abraço na alma.</h5>
+              <p class="text-light mb-0" style="font-size: 0.95rem; line-height: 1.5;">
+                Eu simplesmente amo a genialidade do Ben Stiller nesse filme. A trilha sonora e a fotografia dão uma vontade incontrolável de largar tudo, viajar pelo mundo e viver intensamente. Lembra a gente de que as coisas bonitas não pedem atenção.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. O Drama -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
+            <div class="flex-shrink-0 text-center">
+              <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/dhZ9tPAXLvHINY8Zz7Ux3xbjNFA.jpg" alt="Pôster O Drama" style="width: 100px; height: 150px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+            </div>
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+                  <strong class="text-white me-3">Josué Bevilaqua</strong>
+                  <small class="text-secondary">Avaliou <em>O Drama (2026)</em></small>
+                </div>
+                <div class="text-end" style="color: var(--filmo-accent);">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star" style="color: #495057;"></i>
+                </div>
+              </div>
+              <h5 class="text-white fw-bold mt-2">Tensão que cozinha em banho-maria.</h5>
+              <p class="text-light mb-0" style="font-size: 0.95rem; line-height: 1.5;">
+                Um suspense psicológico espetacular. A química dos protagonistas é palpável e a atmosfera vai ficando tão sufocante que você mal percebe o tempo passar. Aquela reviravolta perto do final me pegou de jeito!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Obsessão -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
+            <div class="flex-shrink-0 text-center">
+              <img src="https://i.pinimg.com/736x/25/0c/1e/250c1ea288e69805cfc401a9bbf2c009.jpg" alt="Pôster Obsessão" style="width: 100px; height: 150px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+            </div>
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+                  <strong class="text-white me-3">Nathan Frazão</strong>
+                  <small class="text-secondary">Avaliou <em>Obsessão (2026)</em></small>
+                </div>
+                <div class="text-end" style="color: var(--filmo-accent);">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star" style="color: #495057;"></i>
+                  <i class="bi bi-star" style="color: #495057;"></i>
+                </div>
+              </div>
+              <h5 class="text-white fw-bold mt-2">Bons momentos, mas um pouco clichê.</h5>
+              <p class="text-light mb-0" style="font-size: 0.95rem; line-height: 1.5;">
+                A premissa é fantástica e os primeiros 40 minutos te deixam na ponta da cadeira. O problema é que do meio pro final a história acaba se rendendo a soluções fáceis de roteiro. Vale a pena assistir pela atuação maravilhosa da protagonista, mas não espere nada muito inovador.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RODAPÉ ACADÊMICO -->
+    <footer class="text-center py-4 mt-5 shadow-sm" style="background-color: #1b2228; border-top: 2px solid var(--filmo-accent);">
+      <div class="container">
+        <h5 class="text-light mb-2 fw-bold" style="font-family: 'Tenor Sans', sans-serif;">Filmography</h5>
+        <p class="text-secondary mb-0" style="font-size: 0.9rem;">
+          Desenvolvido por: Pedro Campos Fagundes Teixeira<br>
+          Projeto Acadêmico - 2026
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- SCRIPT QUE PUXA O NOME DO LOGIN AUTOMATICAMENTE -->
+    <script>
+      const nomeSalvo = localStorage.getItem("usuarioLogado");
+      const elementoNavbar = document.getElementById("nomeUsuarioNavbar");
+      
+      if (nomeSalvo && elementoNavbar) {
+        elementoNavbar.textContent = nomeSalvo;
+      }
+    </script>
+
+    <!-- SCRIPT PARA AS ESTRELAS E PARA PUBLICAR O REVIEW COM PÔSTER -->
+    <script>
+      // Lógica das Estrelas (KPI)
+      const stars = document.querySelectorAll('#starSelector i');
+      const notaInput = document.getElementById('notaFilme');
+      const textoNota = document.getElementById('textoNota');
+      
+      let notaAtual = 0;
+
+      stars.forEach(star => {
+        star.addEventListener('mouseover', function() {
+          let valor = this.getAttribute('data-valor');
+          preencherEstrelas(valor);
+        });
+
+        star.addEventListener('mouseout', function() {
+          preencherEstrelas(notaAtual);
+        });
+
+        star.addEventListener('click', function() {
+          notaAtual = this.getAttribute('data-valor');
+          notaInput.value = notaAtual;
+          textoNota.textContent = notaAtual + " Estrela" + (notaAtual > 1 ? "s" : "");
+          textoNota.style.color = "var(--filmo-accent)";
+        });
+      });
+
+      function preencherEstrelas(valor) {
+        stars.forEach(s => {
+          if (s.getAttribute('data-valor') <= valor) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      }
+
+      // Lógica de Publicar o Review
+      const formReview = document.getElementById('formReview');
+      const filmeReview = document.getElementById('filmeReview');
+      const posterReview = document.getElementById('posterReview');
+      const corpoReview = document.getElementById('corpoReview');
+      const listaReviews = document.getElementById('listaReviews');
+
+      formReview.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const filme = filmeReview.value.trim();
+        const poster = posterReview.value.trim();
+        const corpo = corpoReview.value.trim();
+        const nota = parseInt(notaInput.value);
+
+        if (nota === 0) {
+          alert("Por favor, selecione uma nota de 1 a 5 estrelas!");
+          return;
+        }
+
+        const nomePostador = localStorage.getItem("usuarioLogado") || "Usuário";
+        
+        // Se a pessoa não botar link de imagem, o sistema usa essa foto genérica cinza
+        const imagemFinal = poster !== "" ? poster : "https://via.placeholder.com/300x450/2c3440/00e054?text=P%C3%B4ster";
+
+        if(filme && corpo) {
+          let htmlEstrelas = '';
+          for(let i = 1; i <= 5; i++) {
+            if(i <= nota) {
+              htmlEstrelas += '<i class="bi bi-star-fill"></i> ';
+            } else {
+              htmlEstrelas += '<i class="bi bi-star" style="color: #495057;"></i> ';
+            }
+          }
+
+          const novoCard = document.createElement('div');
+          novoCard.className = 'card border-0 shadow';
+          novoCard.style.backgroundColor = '#1b2228';
+          novoCard.style.borderRadius = '12px';
+
+          // Layout com Flexbox (Pôster na Esquerda, Texto na Direita)
+          novoCard.innerHTML = `
+            <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
+              <div class="flex-shrink-0 text-center">
+                <img src="${imagemFinal}" alt="Pôster do Filme" style="width: 100px; height: 150px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+              </div>
+              <div class="flex-grow-1">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-person-circle fs-5 me-2" style="color: var(--filmo-accent);"></i>
+                    <strong class="text-white me-3">${nomePostador}</strong>
+                    <small class="text-secondary">Avaliou <em>${filme}</em> agora mesmo</small>
+                  </div>
+                  <div class="text-end" style="color: var(--filmo-accent);">
+                    ${htmlEstrelas}
+                  </div>
+                </div>
+                <p class="text-light mt-3 mb-0" style="font-size: 0.95rem; line-height: 1.5;">${corpo}</p>
+              </div>
+            </div>
+          `;
+
+          listaReviews.prepend(novoCard);
+
+          // Limpa os campos
+          filmeReview.value = '';
+          posterReview.value = '';
+          corpoReview.value = '';
+          notaAtual = 0;
+          notaInput.value = 0;
+          preencherEstrelas(0);
+          textoNota.textContent = "Nenhuma nota";
+          textoNota.style.color = "";
+        }
+      });
+    </script>
+  </body>
+</html>

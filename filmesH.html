@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Filmography - Em Alta</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Customizado -->
+    <link href="style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-filmo" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Filmography</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="filmes.html">Filmes</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="filmesH.html">Em alta no momento</a></li>
+            <li class="nav-item"><a class="nav-link" href="debates.html">Debates</a></li>
+            <li class="nav-item"><a class="nav-link" href="reviews.html">Reviews</a></li>
+          </ul>
+          <form class="d-flex me-3" role="search" id="searchForm">
+            <input class="form-control me-2 rounded-3" type="search" placeholder="Buscar filme" aria-label="Search" id="searchInput"/>
+            <button class="btn btn-filmo rounded-3" type="submit">Buscar</button>
+          </form>
+          <!-- ADICIONADO AQUI O ÍCONE DA CONTA E NOME -->
+          <div class="d-flex align-items-center text-light border-start border-secondary ps-3 ms-2">
+            <i class="bi bi-person-circle fs-4 me-2" style="color: var(--filmo-accent);"></i>
+            <span class="fw-semibold" style="font-size: 0.95rem;" id="nomeUsuarioNavbar">Usuário</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="container my-5">
+      <center><h2 class="text-white mb-4">Filmes Em Alta no Momento</h2></center>
+      
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        
+        <!-- 1. Coyote vs Acme -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://preview.redd.it/new-poster-for-coyote-vs-acme-v0-vrkdcgl5qjih1.jpeg?width=1080&crop=smart&auto=webp&s=8183d9e74efd70730133ba0af5a06a39e2c7691f" class="card-img-top" alt="Coyote vs Acme" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">Coyote vs. Acme</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Spider-Man: Brand New Day -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://ingresso-a.akamaihd.net/b2b/production/uploads/articles-content/c0a47a68-1120-4607-a90f-4d3f2a126d78.jpg" class="card-img-top" alt="Spider-Man Brand New Day" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">Homem-Aranha: Um Novo Dia (2026)</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. The Odyssey -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7229d393-c3b8-4703-a41e-e876546d2612/dlzk9fs-10ba7da0-400c-486c-afa1-407e9a2d8227.jpg/v1/fit/w_828,h_1036,q_70,strp/the_odyssey_official_poster_by_kingtchalla_dynasty_dlzk9fs-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTM1MCIsInBhdGgiOiIvZi83MjI5ZDM5My1jM2I4LTQ3MDMtYTQxZS1lODc2NTQ2ZDI2MTIvZGx6azlmcy0xMGJhN2RhMC00MDBjLTQ4NmMtYWZhMS00MDdlOWEyZDgyMjcuanBnIiwid2lkdGgiOiI8PTEwODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.YifTFCpWI9hs4Rvi8EX7ddEJceVZm1m6mbOeN5fiouk" class="card-img-top" alt="The Odyssey" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">A Odisseia (2026)</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. The Whisper Man -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://i.pinimg.com/736x/e4/76/0d/e4760d8dfcee7d4860aa0d34ca787d29.jpg" class="card-img-top" alt="The Whisper Man" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">O Homem-Sussurro</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Buddy -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://i.pinimg.com/736x/09/cf/46/09cf46f1dd774b643a9c595d13a82b32.jpg" class="card-img-top" alt="Buddy" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">Buddy</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Obsession -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://i.pinimg.com/736x/25/0c/1e/250c1ea288e69805cfc401a9bbf2c009.jpg" class="card-img-top" alt="Obsession" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">Obsessão</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. The Dog Stars -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://i.pinimg.com/1200x/51/c9/ae/51c9ae399bcfaaddccc544b069708fbc.jpg" class="card-img-top" alt="The Dog Stars" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">Ponto Sem Retorno</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. The Invite -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://i.pinimg.com/736x/ca/ad/95/caad95a34127c6791a0e08080c7f7020.jpg" class="card-img-top" alt="The Invite" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">O convite</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Tony -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://i.pinimg.com/736x/fb/48/01/fb48012ded9fcca04c94341cf43c3fa0.jpg" class="card-img-top" alt="Tony" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">Tony</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Camp Miasma -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://i.pinimg.com/1200x/6a/13/08/6a13084ff002d81756f95cb844f41c25.jpg" class="card-img-top" alt="Camp Miasma" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">Acampamento Miasma</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. The Drama -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/dhZ9tPAXLvHINY8Zz7Ux3xbjNFA.jpg" class="card-img-top" alt="The Drama" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">O Drama</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Insidious -->
+        <div class="col">
+          <div class="card h-100 border-0" style="background-color: #2c3440; border-radius: 12px; overflow: hidden;">
+            <img src="https://i.pinimg.com/736x/96/b0/e0/96b0e0c6b0acfed0038d56bf70a4b6cb.jpg" class="card-img-top" alt="Insidious" style="height: 350px; object-fit: cover;">
+            <div class="card-body d-flex flex-column text-center p-3">
+              <h6 class="card-title fw-bold mb-3" style="color: var(--filmo-accent);">Sobrenatural</h6>
+              <a href="#" class="btn btn-sm btn-filmo mt-auto fw-bold btn-watchlist">Watchlist</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RODAPÉ ACADÊMICO -->
+    <footer class="text-center py-4 mt-5 shadow-sm" style="background-color: #1b2228; border-top: 2px solid var(--filmo-accent);">
+      <div class="container">
+        <h5 class="text-light mb-2 fw-bold" style="font-family: 'Tenor Sans', sans-serif;">Filmography</h5>
+        <p class="text-secondary mb-0" style="font-size: 0.9rem;">
+          Desenvolvido por: Pedro Campos Fagundes Teixeira<br>
+          Projeto Acadêmico - 2026
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.5net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- SCRIPT DA WATCHLIST -->
+    <script>
+      const botoesWatchlist = document.querySelectorAll('.btn-watchlist');
+
+      botoesWatchlist.forEach(function(botao) {
+        botao.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (botao.classList.contains('ativo')) {
+            botao.classList.remove('ativo');
+            botao.textContent = 'Watchlist';
+            botao.style.backgroundColor = 'transparent';
+            botao.style.color = 'var(--filmo-accent)';
+          } else {
+            botao.classList.add('ativo');
+            botao.textContent = '✓ Na Watchlist';
+            botao.style.backgroundColor = 'var(--filmo-accent)';
+            botao.style.color = 'var(--filmo-bg-dark)';
+          }
+        });
+      });
+    </script>
+
+    <!-- ADICIONADO AQUI O SCRIPT DA CONTA -->
+    <script>
+      const nomeSalvo = localStorage.getItem("usuarioLogado");
+      const elementoNavbar = document.getElementById("nomeUsuarioNavbar");
+      
+      if (nomeSalvo && elementoNavbar) {
+        elementoNavbar.textContent = nomeSalvo;
+      }
+    </script>
+  </body>
+</html>

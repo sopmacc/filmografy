@@ -1,0 +1,83 @@
+/* custom.css - Personalizações do Bootstrap para o site Filmography */
+
+:root {
+  --bs-border-radius: 0.75rem;
+  --bs-border-radius-sm: 0.5rem;
+  --bs-border-radius-lg: 1rem;
+  --bs-border-radius-xl: 1.25rem;
+  --bs-border-radius-xxl: 1.5rem;
+  --bs-border-radius-pill: 50rem;
+
+  /* Paleta inspirada no Letterboxd */
+  --filmo-bg-dark: #14181c;
+  --filmo-accent: #00e054;
+  --filmo-accent-hover: #00c94a;
+}
+
+/* === FONTES E FUNDO GERAL === */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--filmo-bg-dark);
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+  font-family: 'Tenor Sans', sans-serif;
+}
+
+/* === NAVBAR (MENU) === */
+.navbar-filmo {
+  background-color: var(--filmo-bg-dark);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.navbar-filmo .navbar-brand {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.navbar-filmo .nav-link {
+  color: #9ab;
+  font-weight: 500;
+}
+
+.navbar-filmo .nav-link:hover,
+.navbar-filmo .nav-link.active {
+  color: var(--filmo-accent);
+}
+
+.navbar-filmo .form-control {
+  background-color: #2c3440;
+  border: none;
+  color: #fff;
+}
+
+.navbar-filmo .form-control::placeholder {
+  color: #9ab;
+}
+
+/* === BOTÕES GLOBAIS (Agora funcionam em qualquer lugar do site!) === */
+.btn-filmo {
+  background-color: transparent;
+  color: var(--filmo-accent);
+  border: 1px solid var(--filmo-accent);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse e ao clicar (Fica com fundo verde e letra escura) */
+.btn-filmo:hover,
+.btn-filmo:active {
+  background-color: var(--filmo-accent) !important;
+  color: var(--filmo-bg-dark) !important;
+  border-color: var(--filmo-accent) !important;
+}
+
+/* === CHECKBOX DE GÊNEROS === */
+.btn-check:checked + .btn-outline-secondary {
+  background-color: var(--filmo-accent);
+  border-color: var(--filmo-accent);
+  color: var(--filmo-bg-dark) !important; 
+  font-weight: 600;
+}

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Filmography - Debates</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Customizado -->
+    <link href="style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+      /* REGRA NOVA: Garante que os placeholders fiquem visíveis no fundo escuro */
+      .form-control::placeholder {
+        color: #adb5bd !important;
+        opacity: 0.9 !important;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-filmo" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Filmography</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="filmes.html">Filmes</a></li>
+            <li class="nav-item"><a class="nav-link" href="filmesH.html">Em alta no momento</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="debates.html">Debates</a></li>
+            <li class="nav-item"><a class="nav-link" href="reviews.html">Reviews</a></li>
+          </ul>
+          <form class="d-flex me-3" role="search" id="searchForm">
+            <input class="form-control me-2 rounded-3" type="search" placeholder="Buscar debate" aria-label="Search" id="searchInput"/>
+            <button class="btn btn-filmo rounded-3" type="submit">Buscar</button>
+          </form>
+          <div class="d-flex align-items-center text-light border-start border-secondary ps-3 ms-2">
+            <i class="bi bi-person-circle fs-4 me-2" style="color: var(--filmo-accent);"></i>
+            <!-- ADICIONADO O ID AQUI PARA PUXAR O NOME -->
+            <span class="fw-semibold" style="font-size: 0.95rem;" id="nomeUsuarioNavbar">Usuário</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL: DEBATES -->
+    <div class="container my-5" style="max-width: 900px;">
+      
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-white fw-bold mb-0" style="font-family: 'Tenor Sans', sans-serif;">Comunidade & Debates</h2>
+        <span class="badge bg-dark border border-secondary text-light px-3 py-2">Tópicos Ativos</span>
+      </div>
+
+      <!-- Caixa para Enviar Nova Mensagem -->
+      <div class="card border-0 shadow mb-5" style="background-color: #2c3440; border-radius: 12px;">
+        <div class="card-body p-4">
+          <h5 class="fw-bold mb-3" style="color: var(--filmo-accent);">Iniciar uma Nova Discussão</h5>
+          <form id="formMensagem">
+            <div class="mb-3">
+              <input type="text" class="form-control bg-dark text-white border-secondary" id="tituloDebate" placeholder="Sobre qual filme você quer falar?" required>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control bg-dark text-white border-secondary" id="corpoDebate" rows="3" placeholder="Escreva seu ponto de vista ou teoria..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-filmo fw-bold px-4">Publicar Tópico</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Lista de Debates (Comentários Simulados + Novos que o usuário postar) -->
+      <div id="listaDebates" class="d-flex flex-column gap-4">
+        
+        <!-- Tópico 1 -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+              <strong class="text-white me-3">Pedro Campos</strong>
+              <small class="text-secondary">Há 5 minutos • Tópico sobre <em>A Vida Secreta de Walter Mitty (2013)</em></small>
+            </div>
+            <h5 class="text-white fw-bold mt-2">EU AMO O BEN STILLER.</h5>
+            <p class="text-light mb-3" style="font-size: 0.95rem; line-height: 1.5;">
+              É um dos melhores filmes que eu já vi, engraçado demais, uma fotografia linda e me fez querer viver intensamente, quero ver o mundo, conhecer culturas e meu Deus quero me sentir vivo. quero aprender coisas novas, quero comer coisas diferentes e quero tirar fotos, mas principalmente aproveitar os momentos como se fossem os últimos e sempre fazer questão de me lembrar que as coisas belas não pedem atenção.
+            </p>
+            <div class="d-flex gap-3 text-secondary" style="font-size: 0.85rem;">
+              <span><i class="bi bi-chat-heart me-1"></i> 752 Respostas</span>
+              <span><i class="bi bi-hand-thumbs-up me-1"></i> 14,200 Curtidas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+              <strong class="text-white me-3">Sophia Bevilaqua</strong>
+              <small class="text-secondary">Há 5 horas • Tópico sobre <em>As Virgens Suicidas (1999)</em></small>
+            </div>
+            <h5 class="text-white fw-bold mt-2">AMEI</h5>
+            <p class="text-light mb-3" style="font-size: 0.95rem; line-height: 1.5;">
+              Filmes de garotas sendo garotas acabam comigo
+            </p>
+            <div class="d-flex gap-3 text-secondary" style="font-size: 0.85rem;">
+              <span><i class="bi bi-chat-heart me-1"></i> 407 Respostas</span>
+              <span><i class="bi bi-hand-thumbs-up me-1"></i> 12,137 Curtidas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+              <strong class="text-white me-3">Nathan Frazão</strong>
+              <small class="text-secondary">Há 2 horas • Tópico sobre <em>Oppenheimer (2023)</em></small>
+            </div>
+            <h5 class="text-white fw-bold mt-2">Perfeito</h5>
+            <p class="text-light mb-3" style="font-size: 0.95rem; line-height: 1.5;">
+              A forma como o Christopher Nolan constrói o roteiro é algo que eu nunca tinha visto antes.
+            </p>
+            <div class="d-flex gap-3 text-secondary" style="font-size: 0.85rem;">
+              <span><i class="bi bi-chat-heart me-1"></i> 24 Respostas</span>
+              <span><i class="bi bi-hand-thumbs-up me-1"></i> 142 Curtidas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+              <strong class="text-white me-3">Josué Bevilaqua</strong>
+              <small class="text-secondary">Ontem • Tópico sobre <em>Duna: Parte Dois (2024)</em></small>
+            </div>
+            <h5 class="text-white fw-bold mt-2">A jornada do Paul Atreides foi um erro ou destino?</h5>
+            <p class="text-light mb-3" style="font-size: 0.95rem; line-height: 1.5;">
+              Muita gente trata o Paul como herói, mas o filme deixa claro desde o início que ele é uma figura trágica e messiânica perigosa. Denis Villeneuve acertou muito o tom dos livros.
+            </p>
+            <div class="d-flex gap-3 text-secondary" style="font-size: 0.85rem;">
+              <span><i class="bi bi-chat-heart me-1"></i> 158 Respostas</span>
+              <span><i class="bi bi-hand-thumbs-up me-1"></i> 3,100 Curtidas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-person-circle fs-5 me-2 text-secondary"></i>
+              <strong class="text-white me-3">Guilherme Ferreira</strong>
+              <small class="text-secondary">Há 3 horas • Tópico sobre <em>Marty Supreme (2025)</em></small>
+            </div>
+            <h5 class="text-white fw-bold mt-2">Foda!</h5>
+            <p class="text-light mb-3" style="font-size: 0.95rem; line-height: 1.5;">
+              "Eu tiro antes" genio marty mauser
+            </p>
+            <div class="d-flex gap-3 text-secondary" style="font-size: 0.85rem;">
+              <span><i class="bi bi-chat-heart me-1"></i> 598 Respostas</span>
+              <span><i class="bi bi-hand-thumbs-up me-1"></i> 11,154 Curtidas</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+
+    <!-- RODAPÉ ACADÊMICO -->
+    <footer class="text-center py-4 mt-5 shadow-sm" style="background-color: #1b2228; border-top: 2px solid var(--filmo-accent);">
+      <div class="container">
+        <h5 class="text-light mb-2 fw-bold" style="font-family: 'Tenor Sans', sans-serif;">Filmography</h5>
+        <p class="text-secondary mb-0" style="font-size: 0.9rem;">
+          Desenvolvido por: Pedro Campos Fagundes Teixeira<br>
+          Projeto Acadêmico - 2026
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- SCRIPT PARA PUBLICAR O DEBATE NA HORA -->
+    <script>
+      const formMensagem = document.getElementById('formMensagem');
+      const tituloDebate = document.getElementById('tituloDebate');
+      const corpoDebate = document.getElementById('corpoDebate');
+      const listaDebates = document.getElementById('listaDebates');
+
+      formMensagem.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const titulo = tituloDebate.value.trim();
+        const corpo = corpoDebate.value.trim();
+        
+        // Pega o nome do usuário salvo ou usa "Usuário" se não tiver logado
+        const nomePostador = localStorage.getItem("usuarioLogado") || "Usuário";
+
+        if(titulo && corpo) {
+          const novoCard = document.createElement('div');
+          novoCard.className = 'card border-0 shadow';
+          novoCard.style.backgroundColor = '#1b2228';
+          novoCard.style.borderRadius = '12px';
+
+          // Agora a mensagem usa a variável nomePostador
+          novoCard.innerHTML = `
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center mb-2">
+                <i class="bi bi-person-circle fs-5 me-2" style="color: var(--filmo-accent);"></i>
+                <strong class="text-white me-3">${nomePostador}</strong>
+                <small class="text-secondary">Agora mesmo • Tópico recente</small>
+              </div>
+              <h5 class="text-white fw-bold mt-2">${titulo}</h5>
+              <p class="text-light mb-3" style="font-size: 0.95rem; line-height: 1.5;">${corpo}</p>
+              <div class="d-flex gap-3 text-secondary" style="font-size: 0.85rem;">
+                <span><i class="bi bi-chat-heart me-1"></i> 0 Respostas</span>
+                <span><i class="bi bi-hand-thumbs-up me-1"></i> 0 Curtidas</span>
+              </div>
+            </div>
+          `;
+
+          listaDebates.prepend(novoCard);
+
+          tituloDebate.value = '';
+          corpoDebate.value = '';
+        }
+      });
+    </script>
+    
+    <!-- SCRIPT QUE PUXA O NOME DO LOGIN AUTOMATICAMENTE PARA A NAVBAR -->
+    <script>
+      const nomeSalvo = localStorage.getItem("usuarioLogado");
+      const elementoNavbar = document.getElementById("nomeUsuarioNavbar");
+      
+      if (nomeSalvo && elementoNavbar) {
+        elementoNavbar.textContent = nomeSalvo;
+      }
+    </script>
+  </body>
+</html>
