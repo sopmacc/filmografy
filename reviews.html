@@ -4,18 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Filmography - Reviews</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- CSS Customizado -->
     <link href="style.css" rel="stylesheet">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
     <style>
-      /* Estilo extra para as estrelas interativas */
       .star-rating i {
         font-size: 1.5rem;
         cursor: pointer;
@@ -26,7 +21,6 @@
         color: var(--filmo-accent);
       }
       
-      /* REGRA NOVA: Garante que os placeholders fiquem visíveis no fundo escuro */
       .form-control::placeholder {
         color: #adb5bd !important;
         opacity: 0.9 !important;
@@ -35,7 +29,6 @@
   </head>
   <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-filmo" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html">Filmography</a>
@@ -53,16 +46,14 @@
             <input class="form-control me-2 rounded-3" type="search" placeholder="Buscar review" aria-label="Search" id="searchInput"/>
             <button class="btn btn-filmo rounded-3" type="submit">Buscar</button>
           </form>
-          <!-- Perfil do usuário que puxa o nome do Login -->
-          <div class="d-flex align-items-center text-light border-start border-secondary ps-3 ms-2">
+          <a href="perfil.html" class="d-flex align-items-center text-light text-decoration-none border-start border-secondary ps-3 ms-2">
             <i class="bi bi-person-circle fs-4 me-2" style="color: var(--filmo-accent);"></i>
             <span class="fw-semibold" style="font-size: 0.95rem;" id="nomeUsuarioNavbar">Usuário</span>
-          </div>
+          </a>
         </div>
       </div>
     </nav>
 
-    <!-- CONTEÚDO PRINCIPAL: REVIEWS -->
     <div class="container my-5" style="max-width: 900px;">
       
       <div class="d-flex justify-content-between align-items-center mb-4">
@@ -70,7 +61,6 @@
         <span class="badge bg-dark border border-secondary text-light px-3 py-2">Recentes</span>
       </div>
 
-      <!-- Caixa para Publicar um Review -->
       <div class="card border-0 shadow mb-5" style="background-color: #2c3440; border-radius: 12px;">
         <div class="card-body p-4">
           <h5 class="fw-bold mb-3" style="color: var(--filmo-accent);">Escreva sua Crítica</h5>
@@ -85,7 +75,6 @@
               </div>
             </div>
 
-            <!-- KPI DE ESTRELAS -->
             <div class="mb-3 d-flex align-items-center">
               <span class="text-light me-3 fw-semibold">Sua nota:</span>
               <div class="star-rating" id="starSelector">
@@ -108,10 +97,8 @@
         </div>
       </div>
 
-      <!-- Lista de Reviews -->
       <div id="listaReviews" class="d-flex flex-column gap-4">
         
-        <!-- 1. Devoradores de Estrelas -->
         <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
           <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
             <div class="flex-shrink-0 text-center">
@@ -140,7 +127,6 @@
           </div>
         </div>
 
-        <!-- 2. A Odisseia -->
         <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
           <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
             <div class="flex-shrink-0 text-center">
@@ -169,7 +155,6 @@
           </div>
         </div>
 
-        <!-- 3. Homem-Aranha: Um Novo Dia -->
         <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
           <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
             <div class="flex-shrink-0 text-center">
@@ -198,7 +183,6 @@
           </div>
         </div>
 
-        <!-- 4. O Brilho Eterno -->
         <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
           <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
             <div class="flex-shrink-0 text-center">
@@ -227,7 +211,6 @@
           </div>
         </div>
 
-        <!-- 5. Walter Mitty -->
         <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
           <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
             <div class="flex-shrink-0 text-center">
@@ -256,7 +239,6 @@
           </div>
         </div>
 
-        <!-- 6. O Drama -->
         <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
           <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
             <div class="flex-shrink-0 text-center">
@@ -285,7 +267,6 @@
           </div>
         </div>
 
-        <!-- 7. Obsessão -->
         <div class="card border-0 shadow" style="background-color: #1b2228; border-radius: 12px;">
           <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
             <div class="flex-shrink-0 text-center">
@@ -317,7 +298,6 @@
       </div>
     </div>
 
-    <!-- RODAPÉ ACADÊMICO -->
     <footer class="text-center py-4 mt-5 shadow-sm" style="background-color: #1b2228; border-top: 2px solid var(--filmo-accent);">
       <div class="container">
         <h5 class="text-light mb-2 fw-bold" style="font-family: 'Tenor Sans', sans-serif;">Filmography</h5>
@@ -328,22 +308,25 @@
       </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
-    <!-- SCRIPT QUE PUXA O NOME DO LOGIN AUTOMATICAMENTE -->
     <script>
       const nomeSalvo = localStorage.getItem("usuarioLogado");
+      const fotoSalva = localStorage.getItem("fotoUsuario");
+      
       const elementoNavbar = document.getElementById("nomeUsuarioNavbar");
+      const iconeNavbar = elementoNavbar ? elementoNavbar.previousElementSibling : null;
       
       if (nomeSalvo && elementoNavbar) {
         elementoNavbar.textContent = nomeSalvo;
       }
+      
+      if (fotoSalva && iconeNavbar) {
+        iconeNavbar.outerHTML = `<img src="${fotoSalva}" alt="Perfil" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover;" class="me-2 shadow-sm">`;
+      }
     </script>
 
-    <!-- SCRIPT PARA AS ESTRELAS E PARA PUBLICAR O REVIEW COM PÔSTER -->
     <script>
-      // Lógica das Estrelas (KPI)
       const stars = document.querySelectorAll('#starSelector i');
       const notaInput = document.getElementById('notaFilme');
       const textoNota = document.getElementById('textoNota');
@@ -378,7 +361,6 @@
         });
       }
 
-      // Lógica de Publicar o Review
       const formReview = document.getElementById('formReview');
       const filmeReview = document.getElementById('filmeReview');
       const posterReview = document.getElementById('posterReview');
@@ -399,8 +381,13 @@
         }
 
         const nomePostador = localStorage.getItem("usuarioLogado") || "Usuário";
+        const fotoPostador = localStorage.getItem("fotoUsuario");
         
-        // Se a pessoa não botar link de imagem, o sistema usa essa foto genérica cinza
+        let htmlFoto = `<i class="bi bi-person-circle fs-5 me-2" style="color: var(--filmo-accent);"></i>`;
+        if (fotoPostador) {
+          htmlFoto = `<img src="${fotoPostador}" alt="Perfil" style="width: 28px; height: 28px; border-radius: 50%; object-fit: cover;" class="me-2 shadow-sm">`;
+        }
+        
         const imagemFinal = poster !== "" ? poster : "https://via.placeholder.com/300x450/2c3440/00e054?text=P%C3%B4ster";
 
         if(filme && corpo) {
@@ -418,7 +405,6 @@
           novoCard.style.backgroundColor = '#1b2228';
           novoCard.style.borderRadius = '12px';
 
-          // Layout com Flexbox (Pôster na Esquerda, Texto na Direita)
           novoCard.innerHTML = `
             <div class="card-body p-4 d-flex gap-4 flex-column flex-sm-row">
               <div class="flex-shrink-0 text-center">
@@ -427,7 +413,7 @@
               <div class="flex-grow-1">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <div class="d-flex align-items-center">
-                    <i class="bi bi-person-circle fs-5 me-2" style="color: var(--filmo-accent);"></i>
+                    ${htmlFoto}
                     <strong class="text-white me-3">${nomePostador}</strong>
                     <small class="text-secondary">Avaliou <em>${filme}</em> agora mesmo</small>
                   </div>
@@ -442,7 +428,6 @@
 
           listaReviews.prepend(novoCard);
 
-          // Limpa os campos
           filmeReview.value = '';
           posterReview.value = '';
           corpoReview.value = '';
