@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Filmography - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- Bootstrap Icons para o ícone do olhinho -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +29,6 @@
                 <div class="invalid-feedback fw-semibold" id="nomeError"></div>
               </div>
 
-              <!-- CAMPO DE SENHA COM O BOTÃO DO OLHINHO -->
               <div class="mb-4">
                 <label for="senha" class="form-label text-light fw-semibold">Senha</label>
                 <div class="input-group">
@@ -43,6 +41,11 @@
 
               <button type="submit" class="btn btn-filmo w-100 py-2 mt-2 fw-bold" style="font-size: 1.1rem;">Entrar</button>
             </form>
+
+            <!-- Link decorativo para "Criar Conta" -->
+            <div class="text-center mt-3">
+              <a href="#" id="linkCriarConta" class="text-decoration-none" style="color: var(--filmo-accent); font-size: 0.9rem;">Não tem uma conta? Crie uma</a>
+            </div>
 
             <p class="text-center text-secondary mt-4 mb-0" style="font-size: 0.8rem;">
               Este é um protótipo ilustrativo. Digite apenas um nome e uma senha qualquer.
@@ -80,7 +83,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
     <script>
-      // SCRIPT DO BOTÃO DO OLHINHO
       const toggleSenha = document.getElementById("toggleSenha");
       const inputSenha = document.getElementById("senha");
       const iconeOlho = document.getElementById("iconeOlho");
@@ -89,9 +91,14 @@
         const tipo = inputSenha.getAttribute("type") === "password" ? "text" : "password";
         inputSenha.setAttribute("type", tipo);
         
-        // Alterna o ícone entre olho aberto e olho cortado
         iconeOlho.classList.toggle("bi-eye");
         iconeOlho.classList.toggle("bi-eye-slash");
+      });
+
+      // Ação do link "Criar conta" para não levar a lugar nenhum mas ficar funcional esteticamente
+      document.getElementById("linkCriarConta").addEventListener("click", function(e) {
+        e.preventDefault();
+        alert("O cadastro de novas contas está desativado nesta versão do protótipo acadêmico. Faça login com qualquer nome!");
       });
 
       const palavrasBanidas = [
